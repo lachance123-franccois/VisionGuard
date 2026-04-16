@@ -10,7 +10,7 @@ import numpy as np
 from ultralytics import YOLO
 
 from outils.logpy import connexion
-from outils.visualizer import dessin_stats_overlay
+from outils.affichage import dessin_stats_overlay
 
 import tkinter as tk
 from tkinter import filedialog, simpledialog
@@ -208,12 +208,16 @@ def ask_parameters():
 
     conf = simpledialog.askfloat("Confiance", "0.4", initialvalue=0.4)
     iou = simpledialog.askfloat("IoU", "0.45", initialvalue=0.45)
+    
+    save = simpledialog.askstring("Sauvegarder ?", "oui / non", initialvalue="non")
+    save = save.strip().lower() == "oui"
 
-    return mode, source, conf, iou
+
+    return mode, source, conf, iou,save
 
 
 def main() -> None:
-    mode, source, conf, iou = ask_parameters()
+    mode, source, conf, iou,save = ask_parameters()
 
     connexion(verbose=False)
 
@@ -226,13 +230,13 @@ def main() -> None:
     )
 
     if mode == "image":
-        detecteur.detect_image(path=source, save=False)
+        detecteur.detect_image(path=source, save=save)
 
     elif mode == "webcam":
-        detecteur.detect_flux(source=0, save=False)
+        detecteur.detect_flux(source=0, save=save)
 
     elif mode == "video":
-        detecteur.detect_flux(source=source, save=False)
+        detecteur.detect_flux(source=source, save=save)
 
 
 if __name__ == "__main__":
