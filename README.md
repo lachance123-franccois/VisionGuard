@@ -83,7 +83,7 @@ Au lancement, une interface graphique vous demande :
 4. Le **seuil IoU NMS** (défaut : `0.45`)
 
 ```bash
-python -m src.detector
+python -m src.detecteur
 ```
 
 Pour quitter la détection en flux (webcam ou vidéo) : appuyez sur `q`.
