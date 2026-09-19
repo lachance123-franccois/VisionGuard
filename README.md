@@ -50,18 +50,6 @@ yolo-detector/
 
 ---
 
-## Installation
-
-```bash
-git clone https://github.com/votre-user/yolo-detector.git
-cd yolo-detector
-
-python -m venv .venv
-source .venv/bin/activate          # Windows : .venv\Scripts\activate
-
-pip install -r requirements.txt
-```
-
 **Dépendances principales :**
 
 ```
